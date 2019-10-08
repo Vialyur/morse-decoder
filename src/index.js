@@ -35,10 +35,17 @@ const MORSE_TABLE = {
     '---..':  '8',
     '----.':  '9',
     '-----':  '0',
+    ' ': ' ',
 };
 
 function decode(expr) {
-    // write your solution here
+    
+    let separateSymbal;
+    separateSymbal = expr.match(/.{10}/g).join('#').replace(/10/g, ".").replace(/11/g, "-").replace(/0+/g, "").replace(/\*+/g, " ").split("#");
+    for (let i = 0; i < separateSymbal.length; i++) {
+        separateSymbal[i] = MORSE_TABLE[separateSymbal[i]];
+    }   
+    return separateSymbal.join('');
 }
 
 module.exports = {
